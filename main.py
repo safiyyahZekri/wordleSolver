@@ -2,6 +2,8 @@ import json
 import numpy as np
 from utils import build_pattern_matrix, compute_best_guess, pattern_to_code
 
+DEBUG = True #switch to false before submission
+
 with open("dictionary_5_letter.json", "r") as f:
     all_guesses = json.load(f)  # list of ~13,000 strings
 
@@ -26,7 +28,9 @@ while len(candidates) > 1:
     print(f"BEST={best_word}")
 
     while True:
-        guess = input("Enter your guess: ").strip().lower()
+        if DEBUG:
+            print("Enter your guess:")
+        guess = input().strip().lower()
 
         if len(guess) != 5:
             print("Guess must be exactly 5 letters.")
@@ -37,9 +41,10 @@ while len(candidates) > 1:
         else:
             break  
 
-    # --- Validate feedback ---
     while True:
-        feedback = input("Enter feedback (r/y/g): ").strip().lower()
+        if DEBUG:
+            print("Enter feedback (r/y/g):")
+        feedback = input().strip().lower()
 
         if len(feedback) != 5:
             print("Feedback must be exactly 5 characters.")
@@ -61,3 +66,4 @@ if len(candidates) == 1:
     print(f"BEST={all_targets[candidates[0]]}")
 else:
     print("Could not determine the answer.")
+
