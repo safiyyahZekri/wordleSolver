@@ -60,7 +60,7 @@ def build_pattern_matrix(all_guesses, all_targets):
     target_arr = np.array([[ord(c) for c in word] for word in all_targets], dtype=np.uint8)
 
     # Output matrix: M[i,j] will contain feedback code for guess i vs target j
-    M = np.zeros((G, A), dtype=np.uint16)
+    M = np.zeros((G, A), dtype=np.uint8)
     
     for i in range(G):
         # First pass: identify all exact matches (green feedback = 2)

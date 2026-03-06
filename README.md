@@ -87,3 +87,5 @@ The solver treats each guess as a random variable whose outcome is the feedback 
 Higher entropy means the feedback is more uniformly distributed across patterns, so on average each outcome eliminates more candidates.
 
 
+# project by:
+JanaBialy + SafiyyahZekri
