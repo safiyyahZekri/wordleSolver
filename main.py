@@ -1,4 +1,14 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+"""Wordle Solver - Interactive game that suggests optimal guesses using information theory.
+
+This module implements an interactive Wordle solver that uses entropy-based heuristics to find
+the optimal next guess at each step. It loads word lists and a pre-computed pattern matrix,
+then iteratively narrows down the set of candidate answers based on user feedback.
+"""
+
+>>>>>>> safversion
 import json
 import numpy as np
 from utils import build_pattern_matrix, compute_best_guess, pattern_to_code
@@ -22,6 +32,10 @@ with open("targets_5_letter.json", "r") as f:
 try:
     M = np.load("pattern_matrix.npy")
 except FileNotFoundError:
+<<<<<<< HEAD
+=======
+    print("Building pattern matrix (this may take a minute)...")
+>>>>>>> safversion
     M = build_pattern_matrix(all_guesses, all_targets)
     np.save("pattern_matrix.npy", M)
 
@@ -44,7 +58,11 @@ while len(candidates) > 1:
             print("Enter your guess:")
         guess = input().strip().lower()
 
+<<<<<<< HEAD
         # Validate guess format and whether its in the dictionary of valid guesses
+=======
+        # Validate guess format and dictionary membership
+>>>>>>> safversion
         if len(guess) != 5:
             print("Guess must be exactly 5 letters.")
         elif not guess.isalpha():
@@ -54,7 +72,11 @@ while len(candidates) > 1:
         else:
             break  
 
+<<<<<<< HEAD
     # Get user's feedback (r=gray/wrong, y=yellow/wrong position, g=green/correct)
+=======
+    # Get user's feedback (r=red/wrong, y=yellow/wrong position, g=green/correct)
+>>>>>>> safversion
     while True:
         if DEBUG:
             print("Enter feedback (r/y/g):")
@@ -68,7 +90,11 @@ while len(candidates) > 1:
         else:
             break  
 
+<<<<<<< HEAD
     # Convert feedback string to numeric code(powers of 3)
+=======
+    # Convert feedback string to numeric code
+>>>>>>> safversion
     code = pattern_to_code(feedback)
 
     # Filter candidates: only keep targets that would produce the same feedback
@@ -86,6 +112,7 @@ if len(candidates) == 1:
 else:
     print("Could not determine the answer.")
 
+<<<<<<< HEAD
 =======
 import json
 import sys
@@ -159,3 +186,5 @@ while(len(index_possible) > 1):
 print(f"The correct answer is: {possible_answers[index_possible[0]]}")
 
 >>>>>>> refs/remotes/origin/main
+=======
+>>>>>>> safversion
