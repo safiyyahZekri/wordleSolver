@@ -34,7 +34,7 @@ valid_guesses = set(all_guesses)
 # Main game loop: continue guessing until only one candidate remains
 while len(candidates) > 1:
     # Find the guess that maximizes information gain (entropy reduction)
-    best_word = compute_best_guess(candidates, M, all_guesses, all_targets)
+    best_word = compute_best_guess(candidates, M, all_guesses)
     print(f"BEST={best_word}")
 
     # Get user's guess with validation

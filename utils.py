@@ -1,35 +1,6 @@
 import numpy as np
 
 
-def compute_feedback(guess, target):
-    result = [0, 0, 0, 0, 0]
-    
-    # First pass: identify exact matches (green feedback)
-    target_remaining = list(target)
-    for k in range(5):
-        if guess[k] == target[k]:
-            result[k] = 2                    # Green: exact match
-            target_remaining[k] = None       # Mark as consumed
-    
-    # Second pass: identify wrong-position matches (yellow feedback)
-    for k in range(5):
-        if result[k] == 2:
-            continue                        # Skip positions already marked green
-        
-        # Check if guessed letter exists in remaining target letters
-        if guess[k] in target_remaining:
-            result[k] = 1                   # Yellow: letter in target but wrong position
-            idx = target_remaining.index(guess[k])
-            target_remaining[idx] = None    # Mark as consumed
-
-    # Convert result array to base-3 code for compact storage
-    code = 0
-    for k in range(5):
-        code += result[k] * (3 ** k)
-         
-    
-    return code
-
 def pattern_to_code(pattern_str):
     mapping = {'r': 0, 'y': 1, 'g': 2}
     code = 0
@@ -99,7 +70,7 @@ def build_pattern_matrix(all_guesses, all_targets):
     return M
 
 
-def compute_best_guess(candidates, M, all_guesses, all_targets):
+def compute_best_guess(candidates, M, all_guesses):
 
     num_candidates = len(candidates)
     prior_entropy = np.log2(num_candidates)  # H(W): uncertainty in answer
